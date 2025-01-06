@@ -5,14 +5,16 @@ import java.util.Scanner;
 public class App {
 
     public static double calculateWaterBill(double gallonsUsage) {
-        double minimumGallonAmount = 18.84;
-        double numberOfGallonInCCF = 748;
-        if (gallonsUsage <= numberOfGallonInCCF) {
-            return minimumGallonAmount;
+        double minimumWaterBill = 18.84;
+        double numberOfGallonsInCCF = 748;
+        double includedGallons = 2 * numberOfGallonsInCCF;
+
+        if (gallonsUsage <= includedGallons) {
+            return minimumWaterBill;
         } else {
-            double extraGallonUsage = gallonsUsage - numberOfGallonInCCF;
-            double extraGallonUsageAmount = Math.ceil(extraGallonUsage / numberOfGallonInCCF) * 3.9;
-            return (minimumGallonAmount + extraGallonUsageAmount);
+            double extraGallonsUsed = gallonsUsage - includedGallons;
+            double extraAmountOwed = Math.ceil(extraGallonsUsed / numberOfGallonsInCCF) * 3.9;
+            return minimumWaterBill + extraAmountOwed;
         }
     }
 
