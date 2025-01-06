@@ -16,10 +16,12 @@ public class App {
     public static int wordScoreCalculator(String word) {
         // for word.charAt(i) , for each - word.toCharArray(), stream - chars()
         int value = 0;
-        word = word.toUpperCase();
-        for (char c : word.toCharArray()) {
-            int v = letterPoints.get(c);
-            value += v;
+        if (word != null && !word.isBlank()) {
+            word = word.toUpperCase();
+            for (char c : word.toCharArray()) {
+                int v = letterPoints.get(c);
+                value += v;
+            }
         }
         return value;
     }
